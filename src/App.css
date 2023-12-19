@@ -1,33 +1,176 @@
-.App {
-  text-align: center;
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* ---------------------------------- 
+TYPOGRAPHY 
+---------------------------------- */
+@font-face {
+    font-family: 'TopazPlus1200';
+    src: url('fonts/TopazPlusa600a1200a4000.woff2') format('woff2'),
+        url('fonts/TopazPlusa600a1200a4000.woff') format('woff'),
+        url('fonts/TopazPlusa1200v1.0.ttf') format('truetype');
+        font-weight: normal;
+    font-style: normal;
+}
+body {
+  padding:16px 8px;
+}
+body, input, button, textarea {
+  font-family: 'TopazPlus1200', monospace;
+  font-size:16px;
+  background-color: black;
+  color:rgb(170,170,170);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;  
+}
+::selection {
+  background: rgb(255,255,255); /* WebKit/Blink Browsers */
+  opacity: 1;
+  color:black;
+}
+::-moz-selection {
+  background: rgb(255,255,255); /* Gecko Browsers */
+  color:black;
+}
+/* ---------------------------------- 
+TEEAMAT 
+---------------------------------- */
+body.valkoinen, body.valkoinen input, body.valkoinen button, body.valkoinen textarea, body.valkoinen h3 {
+  background: white;
+  color:black;
+}
+body.valkoinen .blokki {
+  border:2px solid rgb(0,0,0);
+}
+body.valkoinen .k-pdf-export {
+  background: white;
+}
+body.vihreä, body.vihreä input, body.vihreä button, body.vihreä textarea, body.vihreä h3 {
+  background: black;
+  color:lime;
+}
+body.vihreä .blokki {
+  border:2px solid lime;
+}
+body.vihreä .k-pdf-export, body.musta .k-pdf-export {
+  background: black;
+}
+/* ---------------------------------- 
+FORMS 
+---------------------------------- */
+.blokki {
+  margin-bottom: 16px;
+  padding: 8px 2px;
+  margin: 8px 3px;
+  border:2px solid rgb(170,170,170);
+  position: relative;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+h3 {
+  display: inline-block;
+  background-color: black;
+  position: absolute;
+  top:-8px;
+  left:3px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.inputsWrapper {
+  width:640px;
+  float: left;
+}
+.inputs {
+  width:100%;
+}
+.inputRow {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.inputRow input {
+  background-color: black;
+  border:none;
+  padding: 0;
+  outline:0;
+}
+button {
+  padding: 0;
+  margin:0;
+  border: none;
+  outline: 0;
+}
+.blokki button.poistaTuote {
+  position: absolute;
+  top:-8px;
+  right:3px;
+}
+.inputRow label {
+  padding-left:17px;
+}
+.inputRow label, input, button {
+  height: 16px;
+}
+.inputRow label, input, div, select {
+  flex: 1;
+}
+.suffixed {
+  position: relative;
+}
+/* ---------------------------------- 
+RENDER 
+---------------------------------- */
+.render {
+  float: left;
+  width:640px;
+}
+pre {
+  width:640px;
+  display: block;
+  white-space: pre-wrap;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
 }

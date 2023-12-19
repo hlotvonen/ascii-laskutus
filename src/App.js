@@ -1,28 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Inputs from './components/Inputs'
+import Render from './components/Render'
+import s from './models/inputstore'
 import './App.css';
+import { PDFExport } from '@progress/kendo-react-pdf';
+import {observer} from "mobx-react"
 
-class App extends Component {
+const App = observer(class App extends Component {
+
+  exportPDF = () => {
+      this.lasku.save();
+  }
+
+// Add this to the render method
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="container">
+        <div className="inputsWrapper">
+          <div className="blokki">
+              <button onClick={this.exportPDF}>( Lataa PDF )</button>
+          </div>
+          <Inputs />
+        </div>
+        <PDFExport paperSize={'A4'}
+            fileName={s.viit + "_" + s.nimi + "_" + s.mnimi + ".pdf"}
+            title={s.viit + "_" + s.nimi + "_" + s.mnimi + ".pdf"}
+            subject={s.viit + "_" + s.nimi + "_" + s.mnimi + ".pdf"}
+            scale={0.90}
+            margin="3mm"
+            ref={(r) => this.lasku = r}>
+              <div style={{background: s.teema === "musta" || s.teema === "vihreä" ? "black" : "white"}}>
+                <Render />
+              </div>
+         </PDFExport>
+         
       </div>
     );
   }
-}
+})
 
 export default App;
